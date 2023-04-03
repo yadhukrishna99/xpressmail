@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Mail
+{% endblock %}
+
+{% block main %}
+    <div style="height: 120px"></div>
+    <div class="center">
+        <div>
+            <h3><u>FROM</u>:&nbsp;&nbsp; {{ email.sender }}</h3><br>
+        </div>
+        <div class="list-group-item view-mail">
+            <strong>Subject:&nbsp;&nbsp; </strong> {{ email.subject }}
+        </div>
+        <div class="list-group-item view-mail">
+            <strong>Body:&nbsp;&nbsp; </strong> {{ email.body }}
+        </div>
+        <div class="list-group-item view-mail">
+            <strong>File Name:&nbsp;&nbsp; </strong> {{ email.filename }}
+        </div>
+        <div class="list-group-item view-mail">
+            <strong>Download File:&nbsp;&nbsp; </strong><a href="{{ url_for('download_file', file_name = email.filename) }}">{{ email.filename }}</a>
+        </div>
+        <div class="list-group-item view-mail">
+            <strong>Time:&nbsp;&nbsp; </strong> {{ email.date }}
+        </div>
+    </div>
+{% endblock %}

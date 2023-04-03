@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Inbox
+{% endblock %}
+
+{% block main %}
+    <h1 id="blink">INBOX</h1><br><br>
+    <table class="table-dark table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"><h2>Sender</h2></th>
+                <th scope="col"><h2>Subject</h2></th>
+                <th scope="col"><h2>Date</h2></th>
+                <th scope="col"><h2>Time</h2></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for email in emails %}
+            <tr>
+                    <td style='font-size:20px';>&#9193;</td>
+                    <td><form action="/favorites" method="post">
+                        <input type="hidden" name="id" value="{{ email.id }}">
+                         <button id="sucess" class="btn btn-outline-secondary" type="submit">Mark as important</button>
+                    </form></td>
+                    <td><h5>{{ email.sender }}</h5></td>
+                    <td><h5>{{ email.subject }}</h5></td>
+                    <td><h5>{{ email.date }}</h5></td>
+                    <td><h5>{{ email.time }}</h5></td>
+                    <td><form action="/view" method="post">
+                            <input type="hidden" name="id" value="{{ email.id }}">
+                            <button class="btn btn-info" type="submit">View</button>
+                    </form></td>
+                    <td><form action="/compose" method="get">
+                            <input type="hidden" name="id" value="{{ email.id }}">
+                            <button class="btn btn-warning" type="submit">Reply</button>
+                    </form></td>
+                    <td><form action="/delete" method="post">
+                        <input type="hidden" name="id" value="{{ email.id }}">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

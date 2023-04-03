@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sent
+{% endblock %}
+
+{% block main %}
+    <h1 id="blink">SENT</h1><br><br>
+    <table class="table-dark table">
+        <thead>
+            <th scope="col"></th>
+            <th scope="col"><h2>RECIPIENT</h2></th>
+            <th scope="col"><h2>SUBJECT</h2></th>
+            <th scope="col"><h2>DATE</h2></th>
+            <th scope="col"><h2>TIME</h2></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for email in emails %}
+                <tr>
+                    <td style='font-size:20px';>&#9193;</td>
+                    <td><h5>{{ email.recipient }}</h5></td>
+                    <td><h5>{{ email.subject }}</h5></td>
+                    <td><h5>{{ email.date }}</h5></td>
+                    <td><h5>{{ email.time }}</h5></td>
+                    <td><form action="/view" method="post">
+                            <input type="hidden" name="id" value="{{ email.id }}">
+                            <button class="btn btn-info" type="submit">View</button>
+                    </form></td>
+                    <td><form action="/delete" method="post">
+                        <input type="hidden" name="id" value="{{ email.id }}">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
