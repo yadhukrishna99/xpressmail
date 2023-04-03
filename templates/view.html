@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Mail
+{% endblock %}
+
+{% block main %}
+    <div style="height: 120px"></div>
+    <div class="center">
+        <div>
+            <h3><u>FROM</u>:&nbsp;&nbsp; {{ email.sender }}</h3><br>
+        </div>
+        <div class="list-group-item view-mail">
+            <strong>Subject:&nbsp;&nbsp; </strong> {{ email.subject }}
+        </div>
+        <div class="list-group-item view-mail">
+            <strong>Body:&nbsp;&nbsp; </strong> {{ email.body }}
+        </div>
+        <div class="list-group-item view-mail">
+            <strong>Time:&nbsp;&nbsp; </strong> {{ email.date }}
+        </div>
+    </div>
+{% endblock %}

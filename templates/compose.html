@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Compose
+{% endblock %}
+
+{% block main %}
+    <h1 id="blink">COMPOSE MAIL</h1><br><br>
+    <form action="/compose" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            From: &nbsp; <h4>{{ sender }}</h4>
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="recipient" name="recipient" placeholder="Recipient" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="subject" name="subject" placeholder="Subject" type="text">
+        </div>
+        <div class="mb-3">
+            <textarea name="body"></textarea>
+        </div>
+        <div class="mb-3">
+             <input class="form-control mx-auto w-auto btn btn-secondary" type="file" id="file" name="file">
+        </div>
+        <button class="btn btn-info" type="submit">Send</button>
+    </form>
+{% endblock %}
